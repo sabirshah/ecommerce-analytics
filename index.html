@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A demonstration electronics shop for a university e-commerce analytics project. All purchases are simulated." />
+  <title>KiwiTech | Demo Electronics Store</title>
+  <style>
+    :root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#17243a;background:#f5f7fb}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}header{background:#fff;border-bottom:1px solid #e5eaf1;position:sticky;top:0;z-index:3}.nav{max-width:1120px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:17px 20px;gap:12px}.brand{font-size:24px;font-weight:800;letter-spacing:-1px}.brand span{color:#1765dc}.cartbtn,.primary{background:#1765dc;color:white;border:0;border-radius:10px;padding:11px 17px;font-weight:700}.cartbtn:hover,.primary:hover{background:#0e4eae}.hero{background:linear-gradient(115deg,#132f62,#1765dc);color:white;padding:58px 20px}.hero>div{max-width:1120px;margin:auto}.hero h1{font-size:clamp(30px,5vw,50px);max-width:700px;margin:0 0 12px;letter-spacing:-1.5px}.hero p{max-width:610px;color:#dbe8ff;line-height:1.6}.tag{display:inline-block;background:#dce9ff;color:#174d9c;border-radius:100px;padding:6px 12px;font-size:12px;font-weight:800;margin-bottom:14px}.hero .tag{background:#ffffff26;color:white}main{max-width:1120px;margin:30px auto;padding:0 20px}.notice{padding:12px 16px;border:1px solid #f4d78a;background:#fff9e8;border-radius:10px;margin-bottom:25px;color:#634913;font-size:14px}.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}.toolbar input,.toolbar select{padding:12px;border:1px solid #ccd6e3;border-radius:10px;background:#fff;min-width:180px}.toolbar input{flex:1}.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:20px}.product{background:#fff;border:1px solid #e6ebf3;border-radius:15px;overflow:hidden;box-shadow:0 4px 14px #1225440a}.visual{height:165px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#edf4ff,#d9e8fc);font-size:68px}.details{padding:18px}.category{font-size:12px;color:#58708e;font-weight:700;text-transform:uppercase}.details h3{font-size:17px;margin:8px 0}.details p{font-size:13px;color:#64748b;line-height:1.5;min-height:38px}.price{font-size:22px;font-weight:800;margin:15px 0}.details button{width:100%}.overlay{position:fixed;inset:0;background:#0b1d3b99;z-index:5;display:none}.overlay.show{display:block}.drawer{position:fixed;right:0;top:0;bottom:0;width:min(440px,100%);background:#fff;z-index:6;transform:translateX(110%);transition:transform .25s;display:flex;flex-direction:column}.drawer.show{transform:translateX(0)}.drawerhead{display:flex;justify-content:space-between;align-items:center;padding:22px;border-bottom:1px solid #e8edf4}.drawerbody{overflow:auto;flex:1;padding:20px}.drawerfoot{padding:20px;border-top:1px solid #e8edf4}.line{display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid #edf1f6}.muted{color:#64748b}.smallbtn{background:#edf3fc;border:0;border-radius:7px;padding:5px 10px}.total{display:flex;justify-content:space-between;font-size:20px;font-weight:800;margin-bottom:15px}.wide{width:100%}.close{background:transparent;border:0;font-size:25px}.checkout{display:none;padding:18px;background:#f6f9fd;border-radius:12px;margin-top:15px}.checkout h3{margin:0 0 8px}.checkout p{font-size:13px;color:#52647a}.checkout label{display:block;margin:14px 0 6px;font-size:14px;font-weight:700}.checkout select{width:100%;padding:10px;border-radius:8px;border:1px solid #ccd6e3}.checkout .primary{margin-top:16px}.confirmation{padding:16px;background:#e8f8ee;border-radius:10px;color:#155d35;margin-top:12px}footer{text-align:center;color:#718096;font-size:13px;padding:40px 20px}button:disabled{opacity:.5;cursor:not-allowed}@media(max-width:600px){.hero{padding:36px 20px}.nav{padding:14px}.brand{font-size:21px}}
+  </style>
+  <!-- GA4 SETUP: Replace G-XXXXXXXXXX with your own Measurement ID, then uncomment the block below.
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+</head>
+<body>
+<header><div class="nav"><div class="brand">Kiwi<span>Tech</span></div><button class="cartbtn" id="openCart">🛒 Cart (<span id="cartCount">0</span>)</button></div></header>
+<section class="hero"><div><span class="tag">UNIVERSITY ANALYTICS DEMONSTRATION</span><h1>Smart tech. Simple shopping.</h1><p>Explore popular electronics and accessories. Browse, add products to your cart, and complete a simulated checkout to help demonstrate e-commerce analytics.</p></div></section>
+<main><div class="notice"><strong>Demo store:</strong> No real purchases or payments are processed. All orders and revenue values are simulated for an academic analytics exercise.</div><h2>Shop products</h2><div class="toolbar"><input id="search" type="search" placeholder="Search products..." aria-label="Search products"><select id="category" aria-label="Filter by category"><option value="all">All categories</option><option>Audio</option><option>Accessories</option><option>Computing</option><option>Smart Home</option></select></div><div class="products" id="products"></div></main>
+<div class="overlay" id="overlay"></div><aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Shopping cart"><div class="drawerhead"><h2>Your cart</h2><button class="close" id="closeCart" aria-label="Close cart">×</button></div><div class="drawerbody"><div id="cartItems"></div><div id="checkout" class="checkout"><h3>Simulated checkout</h3><p>No personal information or payment details are collected.</p><label for="delivery">Delivery option</label><select id="delivery"><option value="standard">Standard delivery — Free</option><option value="express">Express delivery — NZ$10</option></select><button class="primary wide" id="placeOrder">Place test order</button></div><div id="confirmation" aria-live="polite"></div></div><div class="drawerfoot"><div class="total"><span>Total</span><span id="cartTotal">NZ$0.00</span></div><button class="primary wide" id="checkoutBtn">Proceed to test checkout</button></div></aside>
+<footer>© KiwiTech Demo Store · University project · All transactions simulated</footer>
+<script>
+'use strict';
+const products=[
+{id:'KT001',name:'Wireless Headphones',category:'Audio',price:89,icon:'🎧',description:'Comfortable over-ear headphones for everyday listening.'},
+{id:'KT002',name:'Bluetooth Speaker',category:'Audio',price:65,icon:'🔊',description:'Portable wireless speaker with crisp sound.'},
+{id:'KT003',name:'USB-C Charging Hub',category:'Accessories',price:49,icon:'🔌',description:'Convenient multi-port hub for your workspace.'},
+{id:'KT004',name:'Wireless Mouse',category:'Accessories',price:39,icon:'🖱️',description:'Ergonomic mouse for home and office.'},
+{id:'KT005',name:'Mechanical Keyboard',category:'Computing',price:119,icon:'⌨️',description:'Responsive keyboard with a comfortable layout.'},
+{id:'KT006',name:'Laptop Stand',category:'Computing',price:55,icon:'💻',description:'Adjustable stand for improved desk ergonomics.'},
+{id:'KT007',name:'Smart Light Bulb',category:'Smart Home',price:29,icon:'💡',description:'Adjustable lighting for your home.'},
+{id:'KT008',name:'Smart Plug',category:'Smart Home',price:35,icon:'🔋',description:'Control compatible devices more conveniently.'}
+];
+const cart=new Map();
+const $=id=>document.getElementById(id);
+const money=n=>new Intl.NumberFormat('en-NZ',{style:'currency',currency:'NZD'}).format(n);
+const gaItem=p=>({item_id:p.id,item_name:p.name,item_category:p.category,price:p.price,quantity:1});
+function track(event,params){if(typeof window.gtag==='function')window.gtag('event',event,params);}
+function renderProducts(){const q=$('search').value.trim().toLowerCase(),cat=$('category').value;const visible=products.filter(p=>(cat==='all'||p.category===cat)&&(p.name.toLowerCase().includes(q)||p.description.toLowerCase().includes(q)));$('products').innerHTML=visible.map(p=>`<article class="product"><div class="visual" aria-hidden="true">${p.icon}</div><div class="details"><span class="category">${p.category}</span><h3>${p.name}</h3><p>${p.description}</p><div class="price">${money(p.price)}</div><button class="primary" data-add="${p.id}">Add to cart</button></div></article>`).join('')||'<p>No matching products found.</p>';}
+function cartData(){return [...cart.entries()].map(([id,qty])=>({product:products.find(p=>p.id===id),qty}));}
+function cartValue(){return cartData().reduce((sum,{product,qty})=>sum+product.price*qty,0);}
+function renderCart(){const data=cartData();$('cartCount').textContent=data.reduce((s,x)=>s+x.qty,0);$('cartItems').innerHTML=data.length?data.map(({product:p,qty})=>`<div class="line"><div><strong>${p.name}</strong><div class="muted">${money(p.price)} × ${qty}</div><div style="margin-top:8px"><button class="smallbtn" data-change="${p.id}" data-delta="-1">−</button> ${qty} <button class="smallbtn" data-change="${p.id}" data-delta="1">+</button></div></div><strong>${money(p.price*qty)}</strong></div>`).join(''):'<p class="muted">Your cart is empty.</p>';$('cartTotal').textContent=money(cartValue()+($('checkout').style.display==='block'&&$('delivery').value==='express'?10:0));$('checkoutBtn').disabled=!data.length;}
+function openCart(){renderCart();$('overlay').classList.add('show');$('drawer').classList.add('show');$('closeCart').focus();}
+function closeCart(){$('overlay').classList.remove('show');$('drawer').classList.remove('show');}
+function addToCart(id){const p=products.find(x=>x.id===id);if(!p)return;cart.set(id,(cart.get(id)||0)+1);track('add_to_cart',{currency:'NZD',value:p.price,items:[gaItem(p)]});renderCart();openCart();}
+$('products').addEventListener('click',e=>{const b=e.target.closest('[data-add]');if(b)addToCart(b.dataset.add);});
+$('cartItems').addEventListener('click',e=>{const b=e.target.closest('[data-change]');if(!b)return;const p=products.find(x=>x.id===b.dataset.change),delta=Number(b.dataset.delta),old=cart.get(p.id)||0,next=old+delta;if(next<=0)cart.delete(p.id);else cart.set(p.id,next);track(delta>0?'add_to_cart':'remove_from_cart',{currency:'NZD',value:p.price,items:[gaItem(p)]});$('checkout').style.display='none';renderCart();});
+$('search').addEventListener('input',renderProducts);$('category').addEventListener('change',renderProducts);
+$('openCart').addEventListener('click',openCart);$('closeCart').addEventListener('click',closeCart);$('overlay').addEventListener('click',closeCart);document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCart();});
+$('checkoutBtn').addEventListener('click',()=>{if(!cart.size)return;const items=cartData().map(({product:p,qty})=>({...gaItem(p),quantity:qty}));track('begin_checkout',{currency:'NZD',value:cartValue(),items});$('checkout').style.display='block';$('confirmation').innerHTML='';renderCart();$('checkout').scrollIntoView({behavior:'smooth',block:'nearest'});});
+$('delivery').addEventListener('change',renderCart);
+$('placeOrder').addEventListener('click',()=>{if(!cart.size)return;const items=cartData().map(({product:p,qty})=>({...gaItem(p),quantity:qty}));const shipping=$('delivery').value==='express'?10:0;const total=cartValue()+shipping;const transactionId='DEMO-'+Date.now()+'-'+Math.random().toString(36).slice(2,7).toUpperCase();track('purchase',{transaction_id:transactionId,currency:'NZD',value:total,shipping,items,debug_mode:false});cart.clear();$('checkout').style.display='none';renderCart();$('confirmation').innerHTML=`<div class="confirmation"><strong>Test order complete!</strong><p>Reference: ${transactionId}</p><p>Simulated total: ${money(total)}</p><p>No payment was collected.</p></div>`;});
+renderProducts();renderCart();track('view_item_list',{item_list_id:'all_products',item_list_name:'Shop Products',items:products.map(gaItem)});
+</script>
+</body>
+</html>
